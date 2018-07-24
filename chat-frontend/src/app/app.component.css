@@ -1,0 +1,68 @@
+/deep/ html, body {
+    /* position: fixed; */
+    height: 100%;
+    width: 100%;
+    padding-top: 80px;
+    /* background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/chat-background-2.jpg"); */
+    /*background-image: url("http://www.criteriontactical.com/wp-content/uploads/2012/12/textures-backgrounds-cool-9768411.jpg");*/
+    /* background-color: white; */
+}
+
+
+
+.float-bottom {
+    position: absolute;
+    display: inline-block;
+    bottom: 30px;
+    left: 30px;
+    transform: translate(50%, 50%);
+}
+
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(239, 243, 241);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: black;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 45px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

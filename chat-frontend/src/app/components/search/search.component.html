@@ -1,0 +1,15 @@
+<h4>Search Results</h4>
+<ul class="list-group">
+    <!-- <li>{{r.username}}</li> -->
+    <li *ngFor="let r of data" class="list-group-item">
+      <div class="row">
+          <div class="col-1"><i class="fa fa-user"></i></div>
+          <div class="col-11">
+              <span class="title">{{r.username}}</span>
+              <br>
+              <a [routerLink]="['/message', r.pk]">Message</a>
+          </div>
+      </div>   
+      </li>
+  </ul>
+

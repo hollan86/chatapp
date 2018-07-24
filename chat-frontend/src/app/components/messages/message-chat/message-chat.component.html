@@ -1,0 +1,32 @@
+<div class="flex">
+    
+          <div class="col-cts"> <!-- Note that "m4 l3" was added -->
+       <ul>
+         <li *ngFor="let contact of contacts$ | async"><a [routerLink]="['/message', contact.id]">{{contact.name}}</a></li>
+       </ul>
+
+          </div>
+    
+          <div class="col-chat"> <!-- Note that "m8 l9" was added -->
+            <!-- <p>Chat to be added here</p> -->
+            <div class="chat-container">
+                <ul id="msg-list" class="messages">
+                        
+                </ul>
+                <div class="message-input-container">
+                        <input id="inputbox" type="text" class="message-input" autocomplete="off">
+                </div>
+                <div id="message_template">
+                        <li>
+                            <div class="avatar">
+                            </div>
+                            <div class="text_wrapper">
+                                <div class="text"></div>
+                            </div>
+                        </li>
+                </div>
+                     
+            </div>
+          </div>
+    
+        </div>

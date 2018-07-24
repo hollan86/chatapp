@@ -1,0 +1,35 @@
+<!-- <div class="navbar-fixed">
+  <nav class="#26a69a teal lighten-1">
+      <div class="nav-wrapper">
+          
+          <a *ngIf="authService.loggedIn()" href="#!" data-target="slide-out" class="sidenav-trigger show-on-large left"><i class="material-icons">menu</i>Logo</a>
+          <ul>
+           
+            <li *ngIf="authService.loggedIn()">
+                <form autocomplete="off" (submit)="onSubmit(sval.value);sval.value=''">
+                    <div class="input-field">
+                      
+                      <input (keyup)="onTyping(sval.value)" id="search" type="search" required #sval class="autocomplete">
+                      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                      <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </li>
+            <li><a href="#!" class="brand-logo right">Logo</a></li>
+          </ul>
+      </div>      
+  </nav>
+</div> -->
+<!-- <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>  -->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow">
+        <span *ngIf="authService.loggedIn()" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+        <a class="navbar-brand" href="#">MessGIN</a>
+      
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <form *ngIf="authService.loggedIn()" class="form-inline my-2 my-lg-0" (submit)="onSubmit(sval.value);sval.value=''">
+            <input #sval class="form-control mr-sm-2" type="text" placeholder="Search">
+          </form>
+        </div>
+      </nav>
+<!-- <app-sidebar></app-sidebar> -->

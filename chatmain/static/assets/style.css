@@ -1,0 +1,145 @@
+#canvas {
+    margin: auto;
+    background: #ececec;
+    width: 100%;
+}
+
+html, body {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/chat-background-2.jpg");
+    /*background-image: url("http://www.criteriontactical.com/wp-content/uploads/2012/12/textures-backgrounds-cool-9768411.jpg");*/
+    background-color: white;
+}
+.chat-container {
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.chat-header {
+    background-color: white;
+    box-shadow: 2px 2px 2px;
+}
+
+.message-input {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid grey;
+}
+
+.message-input:focus {
+    outline: none;
+}
+.message-input-container {
+    background: transparent;
+    position: fixed;
+    bottom: 10px;
+    left: calc(100%/4);
+    right: calc(100%/4);
+    /*box-shadow: 2px 2px 2px;*/
+    clear: both;
+}
+
+.messages {
+    overflow: auto;
+    position: fixed;
+    top:50px;
+    bottom: 30px;
+    left: calc(100%/6);
+    right: calc(100%/6);
+    list-style: none;
+}
+#message_template {
+    display: none;
+}
+
+
+  .messages .message {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.5s linear;
+    opacity: 0;
+  }
+  .messages .message.left .avatar {
+    background-color: #00B4A0;;
+    background-size: 60px 60px;
+
+    float: left;
+  }
+  .messages .message.left .text_wrapper {
+    background-color: #00B4A0;
+    margin-left: 20px;
+    /*border-top-right-radius: 9px;
+    border-bottom-right-radius: 50px;*/
+  }
+
+  .messages .message.left .text_wrapper::after, .messages .message.left .text_wrapper::before {
+  right: 100%;
+  border-right-color: #00B4A0;
+  }
+
+  .messages .message.left .text {
+    color: #fff;
+  }
+  .messages .message.right .avatar {
+    background-color: #cf2a2a;
+    background-size: 60px 60px;
+    /*background-image: url("images/indiabot_head.png");*/
+    float: right;
+  }
+  .messages .message.right .text_wrapper {
+    background-color: #cf2a2a;
+    margin-right: 20px;
+    float: right;
+    /*border-top-left-radius: 9px;
+    border-bottom-left-radius: 50px;*/
+  }
+  .messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
+    left: 100%;
+    border-left-color: #cf2a2a;
+  }
+  .messages .message.right .text {
+    color: #282827;
+  }
+  .messages .message.appeared {
+    opacity: 1;
+  }
+  .messages .message .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .messages .message .text_wrapper {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 6px;
+    width: calc(100%/3);
+    min-width: 100px;
+    position: relative;
+  }
+  .messages .message .text_wrapper::after, .messages .message .text_wrapper:before {
+    top: 18px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .messages .message .text_wrapper::after {
+    border-width: 13px;
+    margin-top: 0px;
+  }
+  .messages .message .text_wrapper::before {
+    border-width: 15px;
+    margin-top: -2px;
+  }
+  .messages .message .text_wrapper .text {
+    font-size: 16px;
+    font-weight: 300;
+    word-wrap: break-word;
+  }

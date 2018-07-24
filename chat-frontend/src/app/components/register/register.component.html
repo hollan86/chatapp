@@ -1,0 +1,35 @@
+<div class="login-center">
+    <div class="row">
+        <form id="formValidate" class="col s12" (submit)="onSubmitCreds()" [formGroup]="form">
+          <div class="row">
+              <div class="input-field col s12">
+                  <input formControlName="username" [(ngModel)]="username"  id="username" type="text" class="validate"
+                  [formGroup]="form">
+                  <label for="username">Username</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate"
+                [(ngModel)]="password" formControlName="password" [formGroup]="form">
+                <label for="password">Password</label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <input id="p_repeat" type="password" class="validate"
+                [(ngModel)]="passwordrepeat" formControlName="passwordrepeat" [formGroup]="form">
+                <label for="p_repeat">Repeat</label>
+                <div class="#e53935 red darken-1 white-text" *ngIf="form.controls.passwordrepeat.errors?.MatchPassword">Password not match</div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+                <button [disabled]="form.invalid" class="btn waves-effect waves-light right" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                  </button>
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
