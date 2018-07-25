@@ -634,7 +634,8 @@ var MessageChatComponent = /** @class */ (function () {
     };
     MessageChatComponent.prototype.setupSocket = function () {
         var loc = window.location;
-        var wsStart = 'ws://';
+        var wsStart = 'wss://';
+        console.log('CHAT PROTO', window.location.protocol);
         if (loc.protocol == 'https:') {
             wsStart == 'wss://';
         }
@@ -1644,12 +1645,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
-        if (window.location.protocol == 'http://') {
-            this.isDev = true;
-        }
-        else {
-            this.isDev = false;
-        }
+        // if(window.location.protocol == 'http://'){
+        //   this.isDev = true;
+        // }
+        // else{
+        //   this.isDev = false;
+        // }
+        this.isDev = false;
     }
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);

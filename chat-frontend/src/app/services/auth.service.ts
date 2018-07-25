@@ -15,12 +15,13 @@ export class AuthService {
   redirectUrl: string;
   
   constructor(private http: HttpClient) {
-    if(window.location.protocol == 'http://'){
-      this.isDev = true;
-    }
-    else{
-      this.isDev = false;
-    }
+    // if(window.location.protocol == 'http://'){
+    //   this.isDev = true;
+    // }
+    // else{
+    //   this.isDev = false;
+    // }
+    this.isDev = false;
    }
   
    storeUserData(token,user){
