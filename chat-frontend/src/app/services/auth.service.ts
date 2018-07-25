@@ -142,8 +142,10 @@ export class AuthService {
 
   prepEndpoint(ep){
     if(this.isDev){
+      console.log('DEV TRUE')
       return ep;
     } else {
+      console.log('dev not true')
       return 'https://'+window.location.host+'/'+ep;
     }
   }

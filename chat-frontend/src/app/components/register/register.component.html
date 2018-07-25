@@ -1,5 +1,5 @@
 <div class="login-center">
-    <div class="row">
+    <!-- <div class="row">
         <form id="formValidate" class="col s12" (submit)="onSubmitCreds()" [formGroup]="form">
           <div class="row">
               <div class="input-field col s12">
@@ -31,5 +31,25 @@
             </div>
           </div>
         </form>
-    </div>
+    </div> -->
+    <form (submit)="onSubmitCreds()" [formGroup]="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="username" [(ngModel)]="username" [formGroup]="form">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" [formGroup]="form" [(ngModel)]="password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Repeat</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="passwordrepeat" formControlName="passwordrepeat" [formGroup]="form">
+                <div class="bg-danger" *ngIf="form.controls.passwordrepeat.errors?.MatchPassword">Password not match</div>
+            </div>
+            <div class="form-group">
+                    <div class="float-right">
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+            </div>
+    </form>
 </div>
