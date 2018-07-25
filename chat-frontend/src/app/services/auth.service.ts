@@ -144,7 +144,7 @@ export class AuthService {
     if(this.isDev){
       return ep;
     } else {
-      return 'https://'+window.location.host+ep;
+      return 'https://'+window.location.host+'/'+ep;
     }
   }
 }
