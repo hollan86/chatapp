@@ -1,1 +1,1 @@
-web: daphne -p 9000 chatapp.asgi:application
+web: daphne -p $PORT chatapp.asgi:application
