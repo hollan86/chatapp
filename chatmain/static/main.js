@@ -1752,7 +1752,7 @@ var AuthService = /** @class */ (function () {
             return ep;
         }
         else {
-            return 'http://localhost:8090/' + ep;
+            return 'https://' + window.location.host + ep;
         }
     };
     AuthService = __decorate([

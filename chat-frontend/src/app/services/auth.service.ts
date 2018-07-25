@@ -144,7 +144,7 @@ export class AuthService {
     if(this.isDev){
       return ep;
     } else {
-      return 'http://localhost:8090/'+ep;
+      return 'https://'+window.location.host+ep;
     }
   }
 }
