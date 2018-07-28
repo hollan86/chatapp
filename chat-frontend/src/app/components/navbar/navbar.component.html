@@ -27,6 +27,14 @@
         <a class="navbar-brand" href="#">MessGIN</a>
       
         <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                  <a class="nav-link" [routerLink]="['/panel']">Panel</a>
+                </li>
+                <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+                  <a class="nav-link" [routerLink]="['/messages']">Messages</a>
+                </li>
+              </ul>
           <form *ngIf="authService.loggedIn()" class="form-inline my-2 my-lg-0" (submit)="onSubmit(sval.value);sval.value=''">
             <input #sval class="form-control mr-sm-2" type="text" placeholder="Search">
           </form>
