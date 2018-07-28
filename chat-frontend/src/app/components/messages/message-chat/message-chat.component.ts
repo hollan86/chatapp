@@ -61,7 +61,7 @@ export class MessageChatComponent implements OnInit {
     var wsStart = 'ws://'
     console.log('CHAT PROTO',window.location.protocol)
     if (loc.protocol == 'https:'){
-        wsStart == 'wss://'
+        wsStart = 'wss://'
     }
 
     var endpoint = wsStart + loc.host + loc.pathname + '?'+ localStorage.getItem('id_token');
