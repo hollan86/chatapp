@@ -615,7 +615,8 @@ var MessageChatComponent = /** @class */ (function () {
                 _this.chatsocket.close();
             }
             document.getElementById("msg-list").innerHTML = "";
-            _this.contacts$ = _this.service.getContacts();
+            // this.contacts$ = this.service.getContacts();
+            _this.contacts$ = _this.service.getChats();
             _this.contact$ = _this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function (params) {
                 return _this.service.getContact(params.get('id'));
             }));

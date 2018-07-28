@@ -35,7 +35,8 @@ export class MessageChatComponent implements OnInit {
       }
       
       document.getElementById("msg-list").innerHTML = "";
-    this.contacts$ = this.service.getContacts();
+    // this.contacts$ = this.service.getContacts();
+    this.contacts$ = this.service.getChats();
     this.contact$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this.service.getContact(params.get('id')))
