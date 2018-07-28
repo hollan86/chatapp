@@ -1,7 +1,7 @@
 <div class="flex">
     
           <div class="col-cts"> <!-- Note that "m4 l3" was added -->
-       <ul>
+       <ul class="chat-list">
          <li *ngFor="let contact of contacts$ | async"><a [routerLink]="['/message', contact.id]">{{contact.name}}</a></li>
        </ul>
 

@@ -5,7 +5,7 @@
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <strong>Oh snap! No recent chats!</strong> Search for someone to chat with!
           </div>
-       <ul>
+       <ul class="chat-list">
          <li *ngFor="let contact of contacts$ | async"><a [routerLink]="['/message', contact.id]">{{contact.name}}</a></li>
        </ul>
 
