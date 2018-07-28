@@ -169,6 +169,7 @@ var AppComponent = /** @class */ (function () {
         // $('.sidenav').sidenav('close');
         this.authService.logout();
         this.router.navigate(['/']);
+        this.closeNav();
     };
     AppComponent.prototype.closeNav = function () {
         document.getElementById("mySidenav").style.width = "0";
@@ -406,7 +407,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\n  <h4>Welcome!</h4>\n  <a class=\"badge badge-primary\" [routerLink]=\"['/login']\">Login</a><br>\n  <small>Messaging service v1.0.0</small>\n  \n</div>\n"
+module.exports = "<div class=\"jumbotron text-center\">\n  <h4>Welcome!</h4>\n  <a *ngIf=\"!authService.loggedIn()\" class=\"badge badge-primary\" [routerLink]=\"['/login']\">Login</a>\n  <a *ngIf=\"authService.loggedIn()\" class=\"badge badge-primary\" [routerLink]=\"['/panel']\">Panel</a>\n  <br>\n  <small>Messaging service v1.0.0</small>\n  \n</div>\n"
 
 /***/ }),
 

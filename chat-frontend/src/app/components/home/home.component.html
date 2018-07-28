@@ -1,6 +1,8 @@
 <div class="jumbotron text-center">
   <h4>Welcome!</h4>
-  <a class="badge badge-primary" [routerLink]="['/login']">Login</a><br>
+  <a *ngIf="!authService.loggedIn()" class="badge badge-primary" [routerLink]="['/login']">Login</a>
+  <a *ngIf="authService.loggedIn()" class="badge badge-primary" [routerLink]="['/panel']">Panel</a>
+  <br>
   <small>Messaging service v1.0.0</small>
   
 </div>

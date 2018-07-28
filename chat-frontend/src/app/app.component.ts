@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
     // $('.sidenav').sidenav('close');
     this.authService.logout();
     this.router.navigate(['/']);
+    this.closeNav();
   }
     closeNav() {
       document.getElementById("mySidenav").style.width = "0";
