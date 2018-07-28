@@ -58,7 +58,7 @@ export class MessageChatComponent implements OnInit {
 
   setupSocket(){
     var loc = window.location
-    var wsStart = 'wss://'
+    var wsStart = 'ws://'
     console.log('CHAT PROTO',window.location.protocol)
     if (loc.protocol == 'https:'){
         wsStart == 'wss://'

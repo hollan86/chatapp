@@ -21,7 +21,7 @@ export class AuthService {
     // else{
     //   this.isDev = false;
     // }
-    this.isDev = false;
+    this.isDev = true;
    }
   
    storeUserData(token,user){

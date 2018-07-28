@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'chatapp.wsgi.application'
+WSGI_APPLICATION = 'chatapp.wsgi.application'
 
 
 # Database
@@ -143,6 +143,7 @@ CHANNEL_LAYERS = {
             # "hosts": [("localhost", 6379)],
             "hosts":[os.environ.get('REDIS_URL','redis://localhost:6379')]
         },
+        "symmetric_encryption_keys": [SECRET_KEY],
     },
 }
 
@@ -157,3 +158,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500

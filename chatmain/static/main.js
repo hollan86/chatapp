@@ -634,7 +634,7 @@ var MessageChatComponent = /** @class */ (function () {
     };
     MessageChatComponent.prototype.setupSocket = function () {
         var loc = window.location;
-        var wsStart = 'wss://';
+        var wsStart = 'ws://';
         console.log('CHAT PROTO', window.location.protocol);
         if (loc.protocol == 'https:') {
             wsStart == 'wss://';
@@ -1651,7 +1651,7 @@ var AuthService = /** @class */ (function () {
         // else{
         //   this.isDev = false;
         // }
-        this.isDev = false;
+        this.isDev = true;
     }
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
