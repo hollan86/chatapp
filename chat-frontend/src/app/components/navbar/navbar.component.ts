@@ -86,4 +86,13 @@ export class NavbarComponent implements OnInit {
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 }
 
+onLogoutClick(e){
+  e.preventDefault();
+  // console.log('logout clicked!!!!');
+  
+  // $('.sidenav').sidenav('close');
+  this.authService.logout();
+  this.router.navigate(['/']);
+}
+
 }
