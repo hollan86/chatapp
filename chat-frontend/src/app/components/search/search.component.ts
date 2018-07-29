@@ -35,13 +35,15 @@ export class SearchComponent implements OnInit {
 
     this.route.queryParamMap.pipe().subscribe(
       data => {
-        console.log(data['params'].data);
-        this.authService.search(data['params'].data).subscribe(
-          results => {
-            this.data = <any>results;
-            console.log('FETCHED DATA ...',results);
-          }
-        )
+        if(data['params'].data != ''){
+          console.log(data['params'].data);
+          this.authService.search(data['params'].data).subscribe(
+            results => {
+              this.data = <any>results;
+              console.log('FETCHED DATA ...',results);
+            }
+          )
+        }
       }
     )
   }

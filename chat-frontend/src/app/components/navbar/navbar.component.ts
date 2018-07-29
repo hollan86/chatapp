@@ -76,7 +76,9 @@ export class NavbarComponent implements OnInit {
 
     //   }
     // );
-    this.router.navigate(['search'],{ queryParams: { data: val } });
+    if (val != ''){
+      this.router.navigate(['search'],{ queryParams: { data: val } });
+    }
   }
 
   openNav() {

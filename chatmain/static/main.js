@@ -1116,7 +1116,9 @@ var NavbarComponent = /** @class */ (function () {
         //   error => {
         //   }
         // );
-        this.router.navigate(['search'], { queryParams: { data: val } });
+        if (val != '') {
+            this.router.navigate(['search'], { queryParams: { data: val } });
+        }
     };
     NavbarComponent.prototype.openNav = function () {
         console.log(document.getElementById("mySidenav"));
@@ -1490,11 +1492,13 @@ var SearchComponent = /** @class */ (function () {
         });*/
         var _this = this;
         this.route.queryParamMap.pipe().subscribe(function (data) {
-            console.log(data['params'].data);
-            _this.authService.search(data['params'].data).subscribe(function (results) {
-                _this.data = results;
-                console.log('FETCHED DATA ...', results);
-            });
+            if (data['params'].data != '') {
+                console.log(data['params'].data);
+                _this.authService.search(data['params'].data).subscribe(function (results) {
+                    _this.data = results;
+                    console.log('FETCHED DATA ...', results);
+                });
+            }
         });
     };
     SearchComponent = __decorate([
