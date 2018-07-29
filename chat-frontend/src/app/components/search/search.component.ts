@@ -16,6 +16,13 @@ export class SearchComponent implements OnInit {
     private authService:AuthService
   ) { }
 
+  ngDoCheck(){
+    if(!this.authService.loggedIn()){
+      alert('Your session has expired');
+      this.router.navigate(['login']);
+    }
+  }
+
   ngOnInit() {
     /*this.route
     .queryParams

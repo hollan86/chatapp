@@ -845,6 +845,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../message.service */ "./src/app/components/messages/message.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/auth.service */ "./src/app/services/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -858,11 +859,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MessagesPanelComponent = /** @class */ (function () {
     // contacts = ['user1','user2','user3','user4','user5']
-    function MessagesPanelComponent(service, route) {
+    function MessagesPanelComponent(service, route, authService, router) {
         this.service = service;
         this.route = route;
+        this.authService = authService;
+        this.router = router;
         this.ctcheck = false;
     }
     MessagesPanelComponent.prototype.ngOnInit = function () {
@@ -882,6 +886,12 @@ var MessagesPanelComponent = /** @class */ (function () {
             }
         });
     };
+    MessagesPanelComponent.prototype.ngDoCheck = function () {
+        if (!this.authService.loggedIn()) {
+            alert('Your session has expired');
+            this.router.navigate(['login']);
+        }
+    };
     MessagesPanelComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-messages-panel',
@@ -889,7 +899,9 @@ var MessagesPanelComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./messages-panel.component.css */ "./src/app/components/messages/messages-panel/messages-panel.component.css")]
         }),
         __metadata("design:paramtypes", [_message_service__WEBPACK_IMPORTED_MODULE_1__["MessageService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], MessagesPanelComponent);
     return MessagesPanelComponent;
 }());
@@ -1014,7 +1026,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"navbar-fixed\">\n  <nav class=\"#26a69a teal lighten-1\">\n      <div class=\"nav-wrapper\">\n          \n          <a *ngIf=\"authService.loggedIn()\" href=\"#!\" data-target=\"slide-out\" class=\"sidenav-trigger show-on-large left\"><i class=\"material-icons\">menu</i>Logo</a>\n          <ul>\n           \n            <li *ngIf=\"authService.loggedIn()\">\n                <form autocomplete=\"off\" (submit)=\"onSubmit(sval.value);sval.value=''\">\n                    <div class=\"input-field\">\n                      \n                      <input (keyup)=\"onTyping(sval.value)\" id=\"search\" type=\"search\" required #sval class=\"autocomplete\">\n                      <label class=\"label-icon\" for=\"search\"><i class=\"material-icons\">search</i></label>\n                      <i class=\"material-icons\">close</i>\n                    </div>\n                </form>\n            </li>\n            <li><a href=\"#!\" class=\"brand-logo right\">Logo</a></li>\n          </ul>\n      </div>      \n  </nav>\n</div> -->\n<!-- <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger left\"><i class=\"material-icons black-text\">menu</i></a>  -->\n\n<nav class=\"navbar fixed-top navbar-expand-lg navbar-light bg-light shadow\">\n        <!-- <span *ngIf=\"authService.loggedIn()\" style=\"font-size:30px;cursor:pointer\" (click)=\"openNav()\">&#9776;</span> -->\n        <a class=\"navbar-brand\" href=\"#\">MessGIN</a>\n        <button *ngIf=\"authService.loggedIn()\" class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor03\" aria-controls=\"navbarColor03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      \n        <div class=\"collapse navbar-collapse\" id=\"navbarColor03\">\n            <form *ngIf=\"authService.loggedIn()\" class=\"form-inline my-2 my-lg-0 mx-auto\" (submit)=\"onSubmit(sval.value);sval.value=''\">\n                <input #sval class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\">\n              </form>\n            <ul class=\"navbar-nav ml-auto\">\n                <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n                  <a class=\"nav-link\" [routerLink]=\"['/panel']\">Panel</a>\n                </li>\n                <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n                  <a class=\"nav-link\" [routerLink]=\"['/messages']\">Messages</a>\n                </li>\n                <li class=\"nav-item dropdown\" *ngIf=\"authService.loggedIn()\">\n                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                      <i class=\"fa fa-user\"></i>\n                    </a>\n          \n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"dropdownMenuLink\">\n                  <!-- <a class=\"dropdown-item\" *ngIf=\"authService.loggedIn() && getCurrTeam() != undefined\" [routerLink]=\"['/selectteam']\">Switch team ({{getCurrTeam()}})</a> -->\n                  <div class=\"dropdown-divider p-0\"></div>\n                  <a class=\"dropdown-item\" *ngIf=\"authService.loggedIn()\" (click)=\"onLogoutClick($event)\" href=\"#\">Logout <i class=\"fa fa-sign-out\"></i></a>\n                </div>\n              </li>\n              </ul>\n        </div>\n      </nav>\n<!-- <app-sidebar></app-sidebar> -->\n"
+module.exports = "<!-- <div class=\"navbar-fixed\">\n  <nav class=\"#26a69a teal lighten-1\">\n      <div class=\"nav-wrapper\">\n          \n          <a *ngIf=\"authService.loggedIn()\" href=\"#!\" data-target=\"slide-out\" class=\"sidenav-trigger show-on-large left\"><i class=\"material-icons\">menu</i>Logo</a>\n          <ul>\n           \n            <li *ngIf=\"authService.loggedIn()\">\n                <form autocomplete=\"off\" (submit)=\"onSubmit(sval.value);sval.value=''\">\n                    <div class=\"input-field\">\n                      \n                      <input (keyup)=\"onTyping(sval.value)\" id=\"search\" type=\"search\" required #sval class=\"autocomplete\">\n                      <label class=\"label-icon\" for=\"search\"><i class=\"material-icons\">search</i></label>\n                      <i class=\"material-icons\">close</i>\n                    </div>\n                </form>\n            </li>\n            <li><a href=\"#!\" class=\"brand-logo right\">Logo</a></li>\n          </ul>\n      </div>      \n  </nav>\n</div> -->\n<!-- <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger left\"><i class=\"material-icons black-text\">menu</i></a>  -->\n\n<nav class=\"navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-sm\">\n        <!-- <span *ngIf=\"authService.loggedIn()\" style=\"font-size:30px;cursor:pointer\" (click)=\"openNav()\">&#9776;</span> -->\n        <a class=\"navbar-brand\" href=\"#\">MessGIN</a>\n        <button *ngIf=\"authService.loggedIn()\" class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarColor03\" aria-controls=\"navbarColor03\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n          </button>\n      \n        <div class=\"collapse navbar-collapse\" id=\"navbarColor03\">\n            <form *ngIf=\"authService.loggedIn()\" class=\"form-inline my-2 my-lg-0 mx-auto\" (submit)=\"onSubmit(sval.value);sval.value=''\">\n                <input #sval class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Search\">\n              </form>\n            <ul class=\"navbar-nav ml-auto\">\n                <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n                  <a class=\"nav-link\" [routerLink]=\"['/panel']\">Panel</a>\n                </li>\n                <li *ngIf=\"authService.loggedIn()\" class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n                  <a class=\"nav-link\" [routerLink]=\"['/messages']\">Messages</a>\n                </li>\n                <li class=\"nav-item dropdown\" *ngIf=\"authService.loggedIn()\">\n                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                      <i class=\"fa fa-user\"></i>\n                    </a>\n          \n                <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"dropdownMenuLink\">\n                  <!-- <a class=\"dropdown-item\" *ngIf=\"authService.loggedIn() && getCurrTeam() != undefined\" [routerLink]=\"['/selectteam']\">Switch team ({{getCurrTeam()}})</a> -->\n                  <div class=\"dropdown-divider p-0\"></div>\n                  <a class=\"dropdown-item\" *ngIf=\"authService.loggedIn()\" (click)=\"onLogoutClick($event)\" href=\"#\">Logout <i class=\"fa fa-sign-out\"></i></a>\n                </div>\n              </li>\n              </ul>\n        </div>\n      </nav>\n<!-- <app-sidebar></app-sidebar> -->\n"
 
 /***/ }),
 
@@ -1461,6 +1473,12 @@ var SearchComponent = /** @class */ (function () {
         this.router = router;
         this.authService = authService;
     }
+    SearchComponent.prototype.ngDoCheck = function () {
+        if (!this.authService.loggedIn()) {
+            alert('Your session has expired');
+            this.router.navigate(['login']);
+        }
+    };
     SearchComponent.prototype.ngOnInit = function () {
         /*this.route
         .queryParams

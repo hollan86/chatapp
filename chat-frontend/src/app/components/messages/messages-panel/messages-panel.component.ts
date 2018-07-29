@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Contact, MessageService } from '../message.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-messages-panel',
@@ -16,7 +17,9 @@ export class MessagesPanelComponent implements OnInit {
   // contacts = ['user1','user2','user3','user4','user5']
   constructor(
     private service: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,6 +37,12 @@ export class MessagesPanelComponent implements OnInit {
       }
       else {this.ctcheck == false}
     })
+  }
+  ngDoCheck(){
+    if(!this.authService.loggedIn()){
+      alert('Your session has expired');
+      this.router.navigate(['login']);
+    }
   }
 
 }
