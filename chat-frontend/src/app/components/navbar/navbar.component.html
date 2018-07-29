@@ -31,7 +31,7 @@
       
         <div class="collapse navbar-collapse" id="navbarColor03">
             <form *ngIf="authService.loggedIn()" class="form-inline my-2 my-lg-0 mx-auto" (submit)="onSubmit(sval.value);sval.value=''">
-                <input #sval class="form-control mr-sm-2" type="text" placeholder="Search">
+                <input #sval class="form-control form-control-sm mr-sm-2" type="text" placeholder="Search">
               </form>
             <ul class="navbar-nav ml-auto">
                 <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">

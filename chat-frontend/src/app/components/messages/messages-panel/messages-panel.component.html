@@ -1,6 +1,6 @@
 <div class="row">
 
-        <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
+        <div class="col-12"> <!-- Note that "m4 l3" was added -->
           <div *ngIf="ctcheck" class="alert alert-dismissible alert-primary">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <strong>Oh snap! No recent chats!</strong> Search for someone to chat with!
@@ -9,12 +9,6 @@
          <li *ngFor="let contact of contacts$ | async"><a [routerLink]="['/message', contact.id]">{{contact.name}}</a></li>
        </ul>
 
-          </div>
-    
-          <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-            <!-- <app-message-chat></app-message-chat> -->
-            <router-outlet></router-outlet>
-    
           </div>
     
         </div>
