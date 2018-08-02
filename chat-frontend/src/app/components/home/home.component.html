@@ -1,5 +1,5 @@
 <div class="jumbotron text-center">
-  <h4>Welcome!</h4>
+  <h4>MessGIN</h4>
   <a *ngIf="!authService.loggedIn()" class="badge badge-primary" [routerLink]="['/login']">Login</a>
   <a *ngIf="authService.loggedIn()" class="badge badge-primary" [routerLink]="['/panel']">Panel</a>
   <br>
